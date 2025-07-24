@@ -10,7 +10,7 @@ NEWSCHEMA('Login').make(function(schema) {
 		sql.select('item', 'tbl_user').make(function(builder) {
 			builder.fields('id', 'isactivated', 'isconfirmed');
 			builder.where('email', model.email);
-			builder.where('password', model.password.sha1());
+			builder.where('password', model.password.sha256());
 			builder.where('isremoved', false);
 			builder.first();
 		});
